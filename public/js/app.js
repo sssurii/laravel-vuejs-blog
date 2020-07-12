@@ -37594,20 +37594,13 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("h1", [_vm._v(_vm._s(_vm.title))]),
+    _vm._v(" "),
+    _c("p", [_vm._v(_vm._s(_vm.title))])
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("h1", [_vm._v("Hello World!")]),
-      _vm._v(" "),
-      _c("p", [_vm._v("Welcome to Laravel + Vue.js Blog")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -49810,7 +49803,11 @@ Vue.component('hello-world', __webpack_require__(/*! ./components/HelloWorld.vue
  */
 
 var app = new Vue({
-  el: '#app'
+  el: '#app',
+  data: {
+    title: 'Hello World!',
+    content: 'Welcome to Laravel + Vue.js Blog'
+  }
 });
 
 /***/ }),

@@ -1,7 +1,7 @@
 <template>
     <div>
-        <h1>Hello World!</h1>
-        <p>Welcome to Laravel + Vue.js Blog</p>
+        <h1>{{title}}</h1>
+        <p>{{title}}</p>
     </div>
 </template>
 <script>
