@@ -94,6 +94,8 @@
                     <a href="https://vapor.laravel.com">Vapor</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
+                {{-- Example Vue Component --}}
+                <example-component></example-component>
             </div>
         </div>
         <script type="text/javascript" src="{{url('/js/app.js?v='.rand(), [], env('APP_SSL'))}}"></script>
