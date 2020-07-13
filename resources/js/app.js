@@ -30,8 +30,5 @@ Vue.component('hello-world', require('./components/HelloWorld.vue').default);
 
 const app = new Vue({
     el: '#app',
-    data: {
-        title: 'Hello World!',
-        content: 'Welcome to Laravel + Vue.js Blog'
-    }
+    data: {}
 });
