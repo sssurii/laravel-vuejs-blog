@@ -21,6 +21,7 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('hello-world', require('./components/HelloWorld.vue').default);
+Vue.component('navbar-menu', require('./components/Navbar.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -32,6 +33,40 @@ const app = new Vue({
     el: '#app',
     data: {
         title: 'Hello World!',
-        content: 'Welcome to Laravel + Vue.js Blog'
+        content: 'Welcome to Laravel + Vue.js Blog',
+        links: [
+                {
+                    'title' : 'Docs',
+                    'link' : 'https://laravel.com/docs'
+                },
+                {
+                    'title' : 'Laracasts',
+                    'link' : 'https://laracasts.com'
+                },
+                {
+                    'title' : 'News',
+                    'link' : 'https://laravel-news.com'
+                },
+                {
+                    'title' : 'Blog',
+                    'link' : 'https://blog.laravel.com'
+                },
+                {
+                    'title' : 'Nova',
+                    'link' : 'https://nova.laravel.com'
+                },
+                {
+                    'title' : 'Forge',
+                    'link' : 'https://forge.laravel.com'
+                },
+                {
+                    'title' : 'Vapor',
+                    'link' : 'https://vapor.laravel.com'
+                },
+                {
+                    'title' : 'GitHub',
+                    'link' : 'https://github.com/laravel/laravel'
+                }
+            ]
     }
 });
