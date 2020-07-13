@@ -1987,13 +1987,13 @@ __webpack_require__.r(__webpack_exports__);
         'link': 'https://blog.laravel.com'
       }, {
         'title': 'Nova',
-        'link': 'https://nova.laravel.com'
+        'link': ''
       }, {
         'title': 'Forge',
-        'link': 'https://forge.laravel.com'
+        'link': ''
       }, {
         'title': 'Vapor',
-        'link': 'https://vapor.laravel.com'
+        'link': ''
       }, {
         'title': 'GitHub',
         'link': 'https://github.com/laravel/laravel'
@@ -37678,9 +37678,9 @@ var render = function() {
     "div",
     { staticClass: "links" },
     _vm._l(_vm.links, function(link) {
-      return _c("a", { attrs: { href: link.link } }, [
-        _vm._v(_vm._s(link.title))
-      ])
+      return link.link
+        ? _c("a", { attrs: { href: link.link } }, [_vm._v(_vm._s(link.title))])
+        : _vm._e()
     }),
     0
   )
