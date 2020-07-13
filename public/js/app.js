@@ -1971,7 +1971,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['links'],
+  data: function data() {
+    return {
+      links: [{
+        'title': 'Docs',
+        'link': 'https://laravel.com/docs'
+      }, {
+        'title': 'Laracasts',
+        'link': 'https://laracasts.com'
+      }, {
+        'title': 'News',
+        'link': 'https://laravel-news.com'
+      }, {
+        'title': 'Blog',
+        'link': 'https://blog.laravel.com'
+      }, {
+        'title': 'Nova',
+        'link': 'https://nova.laravel.com'
+      }, {
+        'title': 'Forge',
+        'link': 'https://forge.laravel.com'
+      }, {
+        'title': 'Vapor',
+        'link': 'https://vapor.laravel.com'
+      }, {
+        'title': 'GitHub',
+        'link': 'https://github.com/laravel/laravel'
+      }]
+    };
+  },
   mounted: function mounted() {
     console.log('navbar loaded');
   }
@@ -49864,32 +49892,7 @@ var app = new Vue({
   el: '#app',
   data: {
     title: 'Hello World!',
-    content: 'Welcome to Laravel + Vue.js Blog',
-    links: [{
-      'title': 'Docs',
-      'link': 'https://laravel.com/docs'
-    }, {
-      'title': 'Laracasts',
-      'link': 'https://laracasts.com'
-    }, {
-      'title': 'News',
-      'link': 'https://laravel-news.com'
-    }, {
-      'title': 'Blog',
-      'link': 'https://blog.laravel.com'
-    }, {
-      'title': 'Nova',
-      'link': 'https://nova.laravel.com'
-    }, {
-      'title': 'Forge',
-      'link': 'https://forge.laravel.com'
-    }, {
-      'title': 'Vapor',
-      'link': 'https://vapor.laravel.com'
-    }, {
-      'title': 'GitHub',
-      'link': 'https://github.com/laravel/laravel'
-    }]
+    content: 'Welcome to Laravel + Vue.js Blog'
   }
 });
 
