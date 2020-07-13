@@ -1,6 +1,6 @@
 <template>
     <div class="links">
-        <a v-for="link in links" v-bind:href="link.link">{{link.title}}</a>
+        <a v-for="link in links" v-if="link.link" v-bind:href="link.link">{{link.title}}</a>
     </div>
 </template>
 <script>
@@ -26,15 +26,15 @@
                     },
                     {
                         'title' : 'Nova',
-                        'link' : 'https://nova.laravel.com'
+                        'link' : ''
                     },
                     {
                         'title' : 'Forge',
-                        'link' : 'https://forge.laravel.com'
+                        'link' : ''
                     },
                     {
                         'title' : 'Vapor',
-                        'link' : 'https://vapor.laravel.com'
+                        'link' : ''
                     },
                     {
                         'title' : 'GitHub',
