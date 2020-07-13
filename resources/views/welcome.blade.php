@@ -80,11 +80,10 @@
             @endif
 
             <div class="content">
+                <navbar-menu v-bind:links="links"></navbar-menu>
                 <div class="title m-b-md">
                     <hello-world v-bind:title="title" v-bind:content="content"></hello-world>
                 </div>
-                <navbar-menu v-bind:links="links"></navbar-menu>
-                {{-- Example Vue Component --}}
                 <example-component></example-component>
             </div>
         </div>
