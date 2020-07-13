@@ -1948,12 +1948,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      title: 'Hello World!',
-      content: 'Welcome to Laravel + Vue.js Blog'
-    };
-  },
+  props: ['title', 'content'],
   mounted: function mounted() {
     console.log('Component Hello World mounted.');
   }
@@ -49810,7 +49805,10 @@ Vue.component('hello-world', __webpack_require__(/*! ./components/HelloWorld.vue
 
 var app = new Vue({
   el: '#app',
-  data: {}
+  data: {
+    title: 'Hello World!',
+    content: 'Welcome to Laravel + Vue.js Blog'
+  }
 });
 
 /***/ }),

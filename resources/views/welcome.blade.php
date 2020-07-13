@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    <hello-world></hello-world>
+                    <hello-world v-bind:title="title" v-bind:content="content"></hello-world>
                 </div>
 
                 <div class="links">
