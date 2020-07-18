@@ -11,21 +11,24 @@
         props: ['title', 'content'],
         data () {
             return {
-                name: '',
-                customTitle: this.title
+                name: ''
             }
         },
         mounted() {
             console.log('Component Hello World mounted.')
         },
-        methods: {
-            showName () {
-                //Use of data property instead of mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop's value.
-                this.customTitle = this.title;
+        computed:{
+            customTitle: function () {
                 if (this.name != '') {
                     let title = this.title.split(' ');
-                    this.customTitle = title[0] + ' ' + this.name + '!';
+                    return title[0] + ' ' + this.name + '!';
                 }
+                return this.title;
+            } 
+        },
+        methods: {
+            showName () {
+                return this.customTitle;
             }
         }
     }
