@@ -1959,10 +1959,14 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     console.log('Component Hello World mounted.');
   },
+  computed: {
+    customTitle: function customTitle() {
+      return this.name == '' ? this.title : this.title.split(' ')[0] + " ".concat(this.name, "!");
+    }
+  },
   methods: {
     showName: function showName() {
-      var title = this.title.split(' ');
-      this.title = title[0] + ' ' + this.name + '!';
+      return this.customTitle;
     }
   }
 });
@@ -37660,7 +37664,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h1", [_vm._v(_vm._s(_vm.title))]),
+    _c("h1", [_vm._v(_vm._s(_vm.customTitle))]),
     _vm._v(" "),
     _c("p", [_vm._v(_vm._s(_vm.content))]),
     _vm._v(" "),

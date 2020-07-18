@@ -19,12 +19,8 @@
         },
         computed:{
             customTitle: function () {
-                if (this.name != '') {
-                    let title = this.title.split(' ');
-                    return title[0] + ' ' + this.name + '!';
-                }
-                return this.title;
-            } 
+                return (this.name == '') ? this.title : this.title.split(' ')[0] + ` ${this.name}!`;
+            }
         },
         methods: {
             showName () {
