@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>{{title}}</h1>
+        <h1>{{customTitle}}</h1>
         <p>{{content}}</p>
         <input placeholder="Enter your name" type="text" v-model="name" v-on:change="showName">
         <p>You are writing : {{name}}</p>
@@ -11,7 +11,8 @@
         props: ['title', 'content'],
         data () {
             return {
-                name: ''
+                name: '',
+                customTitle: this.title
             }
         },
         mounted() {
@@ -19,8 +20,12 @@
         },
         methods: {
             showName () {
-                let title = this.title.split(' ');
-                this.title = title[0] + ' ' + this.name + '!';
+                //Use of data property instead of mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop's value.
+                this.customTitle = this.title;
+                if (this.name != '') {
+                    let title = this.title.split(' ');
+                    this.customTitle = title[0] + ' ' + this.name + '!';
+                }
             }
         }
     }
