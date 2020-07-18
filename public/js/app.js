@@ -1947,10 +1947,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['title', 'content'],
+  data: function data() {
+    return {
+      name: ''
+    };
+  },
   mounted: function mounted() {
     console.log('Component Hello World mounted.');
+  },
+  methods: {
+    showName: function showName() {
+      var title = this.title.split(' ');
+      this.title = title[0] + ' ' + this.name + '!';
+    }
   }
 });
 
@@ -37649,7 +37662,31 @@ var render = function() {
   return _c("div", [
     _c("h1", [_vm._v(_vm._s(_vm.title))]),
     _vm._v(" "),
-    _c("p", [_vm._v(_vm._s(_vm.content))])
+    _c("p", [_vm._v(_vm._s(_vm.content))]),
+    _vm._v(" "),
+    _c("input", {
+      directives: [
+        {
+          name: "model",
+          rawName: "v-model",
+          value: _vm.name,
+          expression: "name"
+        }
+      ],
+      attrs: { placeholder: "Enter your name", type: "text" },
+      domProps: { value: _vm.name },
+      on: {
+        change: _vm.showName,
+        input: function($event) {
+          if ($event.target.composing) {
+            return
+          }
+          _vm.name = $event.target.value
+        }
+      }
+    }),
+    _vm._v(" "),
+    _c("p", [_vm._v("You are writing : " + _vm._s(_vm.name))])
   ])
 }
 var staticRenderFns = []

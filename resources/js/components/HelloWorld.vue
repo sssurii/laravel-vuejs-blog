@@ -2,7 +2,7 @@
     <div>
         <h1>{{title}}</h1>
         <p>{{content}}</p>
-        <input type="text" v-model="name">
+        <input placeholder="Enter your name" type="text" v-model="name" v-on:change="showName">
         <p>You are writing : {{name}}</p>
     </div>
 </template>
@@ -16,6 +16,12 @@
         },
         mounted() {
             console.log('Component Hello World mounted.')
+        },
+        methods: {
+            showName () {
+                let title = this.title.split(' ');
+                this.title = title[0] + ' ' + this.name + '!';
+            }
         }
     }
 </script>
