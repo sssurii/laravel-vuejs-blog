@@ -1,16 +1,23 @@
 <template>
     <div class="container">
         <h1>Blog</h1>
-         <div>
-            <h1>This Blog Post Title</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+         <div v-for="post in blogPosts" v-key="post.id">
+            <h1>{{post.title}}</h1>
+            <p>{{post.content}}
             </p>
         </div>
     </div>
 </template>
 <script>
     export default {
+        data () {
+            return {
+                blogPosts: null
+            }
+        },
         mounted() {
+            axios.get('http://laravel-vuejs.com/api/posts')
+            .then(response => (this.blogPosts = response.data));
             console.log('Component Blog mounted.')
         }
     }
