@@ -15,7 +15,7 @@ class PostFeatureTest extends TestCase
      */
     public function testPostsListApi()
     {
-        $response = $this->get('/posts');
+        $response = $this->get('api/posts');
 
         $response->assertStatus(200);
     }
