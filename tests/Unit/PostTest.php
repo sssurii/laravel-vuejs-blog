@@ -20,6 +20,6 @@ class PostTest extends TestCase
     public function testListPosts()
     {
         $posts = $this->post->list();
-        $this->assertNotEmpty($cars);
+        $this->assertNotEmpty($posts);
     }
 }

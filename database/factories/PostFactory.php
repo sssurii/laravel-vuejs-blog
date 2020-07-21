@@ -15,7 +15,7 @@ $factory->define(Post::class, function (Faker $faker, $attributes) {
         'meta' => [
             'tags' => $faker->words($nbWords = 3, $asText = false)
         ],
-        'status' => 'Published',
+        'status' => 1,
         'published_at' => $faker->dateTimeBetween($startDate = '-2 years', $endDate = 'now', $timezone = null)
     ];
 });
