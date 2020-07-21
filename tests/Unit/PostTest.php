@@ -7,10 +7,19 @@ use App\Post;
 
 class PostTest extends TestCase
 {
+    private $post;
+    
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        factory(Post::class)->create();
+        $this->post = new Post;
+    }
 
     public function testListPosts()
     {
-        $posts = (new Post)->list();
+        $posts = $this->post->list();
         $this->assertNotEmpty($cars);
     }
 }
