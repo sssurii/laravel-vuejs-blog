@@ -3,6 +3,7 @@
 namespace Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
+use App\Post;
 
 class PostTest extends TestCase
 {
@@ -11,8 +12,9 @@ class PostTest extends TestCase
      *
      * @return void
      */
-    public function testExample()
+    public function testListPosts()
     {
-        $this->assertTrue(true);
+        $posts = (new Post)->list();
+        $this->assertNotEmpty($cars);
     }
 }
