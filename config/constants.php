@@ -2,8 +2,8 @@
 
 return [
     'STATUS' => [
-        '0' => 'DRAFT',
-        '1' => 'PUBLISHED',
-        '2' => 'TRASH',
+        'DRAFT' => '0',
+        'PUBLISHED' => '1',
+        'TRASH' => '2',
     ]
 ];
