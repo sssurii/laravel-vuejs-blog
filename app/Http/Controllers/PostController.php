@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    private $post;
+
+    public function __construct()
+    {
+        $this->post = new Post;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +20,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = $this->post->list();
+        return response()->json($posts, 200);
     }
 
     /**
