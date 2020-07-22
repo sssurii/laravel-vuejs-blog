@@ -1,29 +1,21 @@
 <template>
-    <div class="row">
+    <div class="row flex-column">
         <div class="col-md-4 offset-md-4">
-            @if(isset($message))
-                @if(isset($success) && $success)
-                    <div class="alert alert-success" role="alert">
-                      {{$message}}
-                    </div>
-                @else
-                    <div class="alert alert-danger" role="alert">
-                      {{$message}}
-                    </div>
-                @endif
-            @endif
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
+            <div v-if="message">
+                <div v-if"success" class="alert alert-success" role="alert">
+                  {{message}}
                 </div>
-            @endif
+                <div v-else class="alert alert-danger" role="alert">
+                  {{message}}
+                </div>
+            </div>
+            <div v-if="errors" class="alert alert-danger">
+                <ul>
+                    <li v-for="error in errors">{{ error }}</li>
+                </ul>
+            </div>
 
-            <form class="form-signup form" method="post" action="{{url('/register')}}">
-                @csrf
+            <form class="form-signup form" method="post" v-bind:action="url('/register')">
                 <h1 class="h3 mb-3 font-weight-normal">Register</h1>
                 <div class="form-group">
                     <label for="inputEmail" class="sr-only">Name</label>
@@ -39,14 +31,24 @@
                 </div>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
             </form>
-            @if (Route::has('login'))
-                <a href="{{ route('login') }}">Login</a>
-            @endif
+            <a v-bind:href="route('login')">Login</a>
         </div>
     </div>
 </template>
 <script>
     export default {
+        data() {
+            return {
+                success: false,
+                message: null,
+                hasErrors: false,
+                errors: null,
+            };
+        },
+        methods: {
+            url: (link) => window.location.host + link, 
+            route: (link) => window.location.host + link
+        },
         mounted() {
             console.log('Component Register Form mounted.')
         }
