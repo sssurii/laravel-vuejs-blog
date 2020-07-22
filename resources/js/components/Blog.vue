@@ -1,11 +1,7 @@
 <template>
     <div class="container">
         <h1>Blog</h1>
-         <div v-for="post in blogPosts" v-key="post.id">
-            <h1>{{post.title}}</h1>
-            <p>{{post.content}}
-            </p>
-        </div>
+        <blog-post v-for="post in blogPosts" v-bind:post="post" v-bind:key="post.id"></blog-post>
     </div>
 </template>
 <script>
