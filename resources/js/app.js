@@ -24,6 +24,7 @@ Vue.component('hello-world', require('./components/HelloWorld.vue').default);
 Vue.component('navbar-menu', require('./components/Navbar.vue').default);
 Vue.component('blog', require('./components/Blog.vue').default);
 Vue.component('blog-post', require('./components/BlogPost.vue').default);
+Vue.component('register-form', require('./components/RegisterForm.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
