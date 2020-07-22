@@ -14,7 +14,7 @@
     <body>
         <div id="app" class="flex-center position-ref full-height">
             @include('layouts.header')
-            <div class="content">
+            <div class="content container">
                 @yield('content')
             </div>
         </div>

@@ -17,3 +17,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/blog', 'PagesController@blog');
+Route::get('/register', 'PagesController@register');
