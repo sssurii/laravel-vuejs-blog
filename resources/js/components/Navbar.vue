@@ -22,7 +22,7 @@
                     },
                     {
                         'title' : 'Blog',
-                        'link' : 'https://blog.laravel.com'
+                        'link' : '/blog'
                     },
                     {
                         'title' : 'Nova',
@@ -38,7 +38,11 @@
                     },
                     {
                         'title' : 'GitHub',
-                        'link' : 'https://github.com/laravel/laravel'
+                        'link' : 'https://github.com/sssurii/laravel-vuejs-blog'
+                    },
+                    {
+                        'title' : 'Signup',
+                        'link' : '/register'
                     }
                 ]
             }
