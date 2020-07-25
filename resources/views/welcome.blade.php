@@ -28,6 +28,7 @@
             @endif
 
             <div class="content">
+                <router-view></router-view>
                 <navbar-menu></navbar-menu>
                 <div class="m-t-md m-b-md">
                     <hello-world v-bind:title="title" v-bind:content="content"></hello-world>
