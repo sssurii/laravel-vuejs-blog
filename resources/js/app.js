@@ -8,6 +8,16 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+import VueRouter from 'vue-router';
+
+Vue.use(VueRouter);
+
+const routes = [];
+
+const router = new VueRouter({
+  routes 
+});
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -34,6 +44,7 @@ Vue.component('register-form', require('./components/RegisterForm.vue').default)
 
 const app = new Vue({
     el: '#app',
+    router,
     data: {
         title: 'Hello World!',
         content: 'Welcome to Laravel + Vue.js Blog'
