@@ -1,6 +1,6 @@
 <template>
     <div class="links">
-        <a v-for="link in links" v-if="link.link" v-bind:href="link.link">{{link.title}}</a>
+        <router-link v-for="link in links" v-if="link.link" :to="link.link" active-link="active" :key="link.title">{{link.title}}</router-link>
     </div>
 </template>
 <script>
