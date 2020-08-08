@@ -2055,6 +2055,9 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       links: [{
+        'title': 'Home',
+        'link': '/'
+      }, {
         'title': 'Hello World',
         'link': '/hello-world'
       }, {
@@ -2063,9 +2066,6 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         'title': 'News',
         'link': 'https://laravel-news.com'
-      }, {
-        'title': 'Blog',
-        'link': '/blog'
       }, {
         'title': 'Nova',
         'link': ''
@@ -37921,14 +37921,9 @@ var render = function() {
     { staticClass: "links" },
     _vm._l(_vm.links, function(link) {
       return link.link
-        ? _c(
-            "router-link",
-            {
-              key: link.title,
-              attrs: { to: link.link, "active-link": "active" }
-            },
-            [_vm._v(_vm._s(link.title))]
-          )
+        ? _c("router-link", { key: link.title, attrs: { to: link.link } }, [
+            _vm._v(_vm._s(link.title))
+          ])
         : _vm._e()
     }),
     1
@@ -37958,7 +37953,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row flex-column" }, [
     _c("div", { staticClass: "col-md-4 offset-md-4" }, [
-      _vm.message != null
+      _vm.message
         ? _c("div", [
             _vm._v(
               '"success" class="alert alert-success" role="alert">\n              ' +
@@ -53308,6 +53303,12 @@ Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]);
 var routes = [{
   path: '/hello-world',
   component: _components_HelloWorld__WEBPACK_IMPORTED_MODULE_1__["default"]
+}, {
+  path: '/',
+  component: __webpack_require__(/*! ./components/Blog.vue */ "./resources/js/components/Blog.vue")["default"]
+}, {
+  path: '/register',
+  component: __webpack_require__(/*! ./components/RegisterForm.vue */ "./resources/js/components/RegisterForm.vue")["default"]
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
   mode: "history",

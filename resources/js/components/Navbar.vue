@@ -1,6 +1,6 @@
 <template>
     <div class="links">
-        <router-link v-for="link in links" v-if="link.link" :to="link.link" active-link="active" :key="link.title">{{link.title}}</router-link>
+        <router-link v-for="link in links" v-if="link.link" :to="link.link" :key="link.title">{{link.title}}</router-link>
     </div>
 </template>
 <script>
@@ -8,6 +8,10 @@
         data() {
             return {
                 links: [
+                    {
+                        'title' : 'Home',
+                        'link' : '/'
+                    },
                     {
                     'title' : 'Hello World',
                     'link' : '/hello-world'
@@ -19,10 +23,6 @@
                     {
                         'title' : 'News',
                         'link' : 'https://laravel-news.com'
-                    },
-                    {
-                        'title' : 'Blog',
-                        'link' : '/blog'
                     },
                     {
                         'title' : 'Nova',
