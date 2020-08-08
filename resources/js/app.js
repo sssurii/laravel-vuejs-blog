@@ -15,7 +15,9 @@ import HelloWorld from './components/HelloWorld';
 Vue.use(VueRouter);
 
 const routes = [
-    {path: '/hello-world', component: HelloWorld}
+    {path: '/hello-world', component: HelloWorld},
+    {path: '/', component: require('./components/Blog.vue').default},
+    {path: '/register', component: require('./components/RegisterForm.vue').default}
 ];
 
 const router = new VueRouter({
