@@ -9,11 +9,13 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 import VueRouter from 'vue-router';
+import HelloWorld from './components/HelloWorld';
+
 
 Vue.use(VueRouter);
 
 const routes = [
-    {path: '/hello-world', component:() => import('./components/HelloWorld.vue')}
+    {path: '/hello-world', component: HelloWorld}
 ];
 
 const router = new VueRouter({
