@@ -13,7 +13,7 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
 const routes = [
-    {path: '/hello-world', component: require('./components/HelloWorld.vue').default}
+    {path: '/hello-world', component:() => import('./components/HelloWorld.vue')}
 ];
 
 const router = new VueRouter({
