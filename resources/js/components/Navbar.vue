@@ -9,8 +9,8 @@
             return {
                 links: [
                     {
-                    'title' : 'Docs',
-                    'link' : 'https://laravel.com/docs'
+                    'title' : 'Hello World',
+                    'link' : '/hello-world'
                     },
                     {
                         'title' : 'Laracasts',

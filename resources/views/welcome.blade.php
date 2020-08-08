@@ -28,6 +28,7 @@
             @endif
 
             <div class="content">
+                <navbar-menu></navbar-menu>
                 <router-view></router-view>
             </div>
         </div>
