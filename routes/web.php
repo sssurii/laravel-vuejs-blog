@@ -16,9 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/{any}', function () {
-    return view('welcome');
-});
- // Below routes will not be served from laravel i.e. backend/server
 Route::get('/blog', 'PagesController@blog');
 Route::get('/register', 'PagesController@register');
+Route::get('/{any}', function () { //keep this route at end if want to server all web routes defined in this file by laravel, rest request will be passed to Vue-router
+    return view('welcome');
+});
