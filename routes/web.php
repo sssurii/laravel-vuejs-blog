@@ -16,5 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/{any}', function () {
+    return view('welcome');
+});
+ // Below routes will not be served from laravel i.e. backend/server
 Route::get('/blog', 'PagesController@blog');
 Route::get('/register', 'PagesController@register');
