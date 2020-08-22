@@ -25,4 +25,9 @@ class Post extends Model
         return $this->orderBy('published_at', 'desc')
                     ->get();
     }
+
+    public function findById(int $id)
+    {
+        return $this->whereId($id)->first();
+    }
 }

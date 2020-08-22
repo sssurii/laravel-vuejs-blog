@@ -22,4 +22,17 @@ class PostTest extends TestCase
         $posts = $this->post->list();
         $this->assertNotEmpty($posts);
     }
+
+    public function testViewPost()
+    {
+        $post = factory(Post::class)->create();
+        $posts = $this->post->findById($post->id);
+        $this->assertNotEmpty($posts);
+    }
+
+    public function testViewPostWithInvalidId()
+    {
+        $posts = $this->post->findById(999);
+        $this->assertEmpty($posts);
+    }
 }
