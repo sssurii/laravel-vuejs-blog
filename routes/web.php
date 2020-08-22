@@ -18,9 +18,14 @@ Route::get('/', function () {
 });
 Route::get('/blog', 'PagesController@blog');
 Route::get('/register', 'PagesController@register');
-Route::get('/{any}', function () { //keep this route at end if want to server all web routes defined in this file by laravel, rest request will be passed to Vue-router
+
+
+//keep this route at end if want to server all web routes defined in this file by laravel, rest request will be passed to Vue-router
+Route::get('/{any}', function () {
     return view('welcome');
 });
-Route::get('/{any}/{slug}', function () { //keep this route at end if want to server all web routes defined in this file by laravel, rest request will be passed to Vue-router
+
+//add route to handle url with 2 parts like /post/2, pass request to Vue router.
+Route::get('/{any}/{slug}', function () {
     return view('welcome');
 });
