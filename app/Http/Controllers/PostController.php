@@ -41,9 +41,10 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show(Request $request, int $id)
     {
-        //
+        $post = $this->post->findById($id);
+        return response()->json($post, 200);
     }
 
     /**
