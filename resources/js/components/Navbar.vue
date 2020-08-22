@@ -1,5 +1,5 @@
 <template>
-    <div class="links">
+    <div class="links m-t-md m-b-md">
         <router-link v-for="link in links" v-if="link.link" :to="link.link" :key="link.title">{{link.title}}</router-link>
     </div>
 </template>

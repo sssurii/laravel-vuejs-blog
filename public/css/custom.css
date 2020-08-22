@@ -46,6 +46,10 @@ html, body {
     text-transform: uppercase;
 }
 
+.links > a.router-link-exact-active {
+    text-decoration: underline; 
+}
+
 .m-b-md {
     margin-bottom: 30px;
 }
