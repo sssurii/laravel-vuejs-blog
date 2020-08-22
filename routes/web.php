@@ -21,3 +21,6 @@ Route::get('/register', 'PagesController@register');
 Route::get('/{any}', function () { //keep this route at end if want to server all web routes defined in this file by laravel, rest request will be passed to Vue-router
     return view('welcome');
 });
+Route::get('/{any}/{slug}', function () { //keep this route at end if want to server all web routes defined in this file by laravel, rest request will be passed to Vue-router
+    return view('welcome');
+});
