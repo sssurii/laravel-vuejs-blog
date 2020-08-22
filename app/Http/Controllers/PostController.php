@@ -44,7 +44,7 @@ class PostController extends Controller
     public function show(Request $request, int $id)
     {
         $post = $this->post->findById($id);
-        return response()->json($post, 200);
+        return response()->json($post, $post ? 200 : 404);
     }
 
     /**

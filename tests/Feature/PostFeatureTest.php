@@ -31,4 +31,10 @@ class PostFeatureTest extends TestCase
         $response->assertStatus(200);
         $response->assertJsonPath('title', $this->post->title);
     }
+
+    public function testPostViewApiWithNonExistingId()
+    {
+        $response = $this->get('api/post/'. ($this->post->id + 10));
+        $response->assertStatus(404);
+    }
 }
