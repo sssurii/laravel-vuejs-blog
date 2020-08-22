@@ -17,6 +17,7 @@ Vue.use(VueRouter);
 const routes = [
     {path: '/hello-world', component: HelloWorld},
     {path: '/', component: require('./components/Blog.vue').default},
+    {path: '/post/:id', component: require('./components/BlogPost.vue').default},
     {path: '/register', component: require('./components/RegisterForm.vue').default}
 ];
 
