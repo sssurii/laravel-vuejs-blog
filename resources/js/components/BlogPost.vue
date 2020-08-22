@@ -1,8 +1,9 @@
 <template>
     <div>
-         <h1>{{post.title}}</h1>
-         <p>{{post.content}}</p>
-         <router-link v-if="showReadMore" :to="'post/' + post.id" :key="post.title">Read More ...</router-link>
+        <h1>{{postObj.title}}</h1>
+        <p>{{postObj.content}}
+            <router-link v-if="showReadMore" :to="'post/' + post.id" :key="post.title">Read More ...</router-link>
+        </p>
     </div>
 </template>
 <script>
@@ -11,6 +12,10 @@
         data() {
             return {
                 showReadMore: true,
+                postObj: {
+                    title:'',
+                    content:''
+                }
             }
         },
         beforeMount() {
@@ -18,7 +23,9 @@
                 this.showReadMore = false;
                 let post_id = this.$route.params.id;
                 axios.get('http://blog.laravel-vuejs.com/api/post'+ '/' + post_id)
-                .then(response => (this.post = response.data));
+                .then(response => (this.postObj = response.data));
+            } else {
+                this.postObj = this.post;
             }
         },
         mounted() {
