@@ -56,5 +56,8 @@ const app = new Vue({
     data: {
         title: 'Hello World!',
         content: 'Welcome to Laravel + Vue.js Blog'
+    },
+    methods: {
+        url: (link) => '/' + link.trim('/')
     }
 });

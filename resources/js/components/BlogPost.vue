@@ -22,7 +22,7 @@
             if(this.post == undefined) {
                 this.showReadMore = false;
                 let post_id = this.$route.params.id;
-                axios.get('http://blog.laravel-vuejs.com/api/post'+ '/' + post_id)
+                axios.get(this.$root.url('api/post') + '/' + post_id)
                 .then(response => (this.postObj = response.data));
             } else {
                 this.postObj = this.post;

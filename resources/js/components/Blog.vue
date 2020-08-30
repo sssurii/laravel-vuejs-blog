@@ -19,7 +19,7 @@
             }
         },
         mounted() {
-            axios.get('http://blog.laravel-vuejs.com/api/posts')
+            axios.get(this.$root.url('api/posts'))
             .then(response => (this.blogPosts = response.data));
             console.log('Component Blog mounted.')
         }
