@@ -17,6 +17,10 @@
                     'link' : '/hello-world'
                     },
                     {
+                        'title' : 'Signup',
+                        'link' : '/register'
+                    },
+                    {
                         'title' : 'Laracasts',
                         'link' : 'https://laracasts.com'
                     },
@@ -39,10 +43,6 @@
                     {
                         'title' : 'GitHub',
                         'link' : 'https://github.com/sssurii/laravel-vuejs-blog'
-                    },
-                    {
-                        'title' : 'Signup',
-                        'link' : '/register'
                     }
                 ]
             }
