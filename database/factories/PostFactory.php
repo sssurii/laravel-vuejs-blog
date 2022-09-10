@@ -1,21 +1,28 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+namespace Database\Factories;
 
-use App\Post;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use App\User;
-use Faker\Generator as Faker;
 
-$factory->define(Post::class, function (Faker $faker, $attributes) {
-    $user_id = $attributes['user_id'] ?? (factory(User::class)->create())->id;
-    return [
-        'title' => $faker->sentence($nbWords = 6, $variableNbWords = true),
-        'content' => $faker->realText($faker->numberBetween(10, 200)),
-        'user_id' => $user_id,
-        'meta' => [
-            'tags' => $faker->words($nbWords = 3, $asText = false)
-        ],
-        'status' => config('constants.STATUS.PUBLISHED'),
-        'published_at' => $faker->dateTimeBetween($startDate = '-2 years', $endDate = 'now', $timezone = null)
-    ];
-});
+class PostFactory extends Factory
+{
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'title' => $this->faker->sentence($nbWords = 6, $variableNbWords = true),
+            'content' => $this->faker->realText($this->faker->numberBetween(10, 200)),
+            'user_id' => (User::factory()->create())->id,
+            'meta' => [
+                'tags' => $this->faker->words($nbWords = 3, $asText = false)
+            ],
+            'status' => config('constants.STATUS.PUBLISHED'),
+            'published_at' => $this->faker->dateTimeBetween($startDate = '-2 years', $endDate = 'now', $timezone = null)
+        ];
+    }
+}
