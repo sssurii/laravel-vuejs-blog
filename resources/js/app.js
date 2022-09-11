@@ -19,6 +19,7 @@ Vue.use(VueRouter);
 const routes = [
     {path: '/hello-world', component: HelloWorld},
     {path: '/', component: require('./components/Blog.vue').default},
+    {path: '/post/create', component: require('./components/posts/add.vue').default},
     {path: '/post/:id', component: require('./components/BlogPost.vue').default},
     {path: '/register', component: require('./components/RegisterForm.vue').default}
 ];
@@ -44,6 +45,7 @@ Vue.component('hello-world', require('./components/HelloWorld.vue').default);
 Vue.component('navbar-menu', require('./components/Navbar.vue').default);
 Vue.component('blog', require('./components/Blog.vue').default);
 Vue.component('blog-post', require('./components/BlogPost.vue').default);
+Vue.component('add-post', require('./components/posts/add.vue').default);
 Vue.component('register-form', require('./components/RegisterForm.vue').default);
 
 /**
