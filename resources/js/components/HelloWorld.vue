@@ -11,7 +11,8 @@
         props: ['title', 'content'],
         data () {
             return {
-                name: ''
+                name: '',
+                content: ''
             }
         },
         mounted() {
