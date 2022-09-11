@@ -1,9 +1,11 @@
 <template>
-    <div>
-        <h1 class="text-2xl font-bold">{{postObj.title}}</h1>
-        <p>{{postObj.content}}
-            <router-link v-if="showReadMore" :to="'post/' + post.id" :key="post.title">Read More ...</router-link>
-        </p>
+    <div class="max-w-3xl mx-auto pb-28">
+        <article class="relative pt-10">
+            <h1 class="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-slate-200 md:text-3xl ">{{postObj.title}}</h1>
+            <div class="mt-12 prose prose-slate dark:prose-dark">
+                <p>{{postObj.content}} </p>
+                </div>           
+        </article>
     </div>
 </template>
 <script>
@@ -18,16 +20,9 @@
                 }
             }
         },
-        beforeMount() {
-            if(this.post == undefined) {
-                this.showReadMore = false;
-                let post_id = this.$route.params.id;
-                this.getPost(post_id);
-            } else {
-                this.postObj = this.post;
-            }
-        },
         mounted() {
+            let post_id = this.$route.params.id;
+            this.getPost(post_id);
             console.log('Component Blog Post mounted.')
         },
         methods: {

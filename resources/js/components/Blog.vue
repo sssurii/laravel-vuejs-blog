@@ -4,7 +4,7 @@
         <div v-if="blogPosts">
             <!-- It's not recommend to use v-if with v-for. For more detail check :
                 https://vuejs.org/v2/style-guide/#Avoid-v-if-with-v-for-essential -->
-            <div v-for="post in blogPosts" v-bind:post="post" v-bind:key="post.id">
+            <div v-for="post in blogPosts" v-bind:key="post.id">
                 <div class="border border-radius-2 mb-2 p-4">
                     <h1 class="text-2xl font-bold mb-2">{{post.title}}</h1>
                     <p>
