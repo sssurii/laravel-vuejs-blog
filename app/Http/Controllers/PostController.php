@@ -32,7 +32,11 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $data['user_id'] = 1;
+        $data['status'] = config('constants.STATUS.PUBLISHED');
+        $post = $this->post->create($data);
+        return response()->json($post, 201);
     }
 
     /**
