@@ -2217,13 +2217,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['title', 'content'],
+  props: ['title'],
   data: function data() {
     return {
-      name: '',
-      content: ''
+      name: ''
     };
   },
   mounted: function mounted() {
@@ -38655,8 +38653,6 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("h1", [_vm._v(_vm._s(_vm.customTitle))]),
-    _vm._v(" "),
-    _c("p", [_vm._v(_vm._s(_vm.content))]),
     _vm._v(" "),
     _c("input", {
       directives: [
