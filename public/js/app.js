@@ -2400,13 +2400,41 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       post_data: {
         title: null,
         content: null
-      }
+      },
+      message: null,
+      success: false,
+      errors: null
     };
   },
   mounted: function mounted() {
@@ -2417,11 +2445,21 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     createPost: function createPost(e) {
+      var _this = this;
+
       e.preventDefault();
       axios.post('/api/post/create', this.post_data).then(function (response) {
         console.log(response);
+        _this.post_data = {
+          title: null,
+          content: null
+        };
+        _this.success = true;
+        _this.message = 'Post created successfully!';
       })["catch"](function (error) {
         console.log(error);
+        this.success = false;
+        this.message = error;
       });
     }
   }
@@ -38858,107 +38896,226 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("form", [
-    _c("div", { staticClass: "flex flex-wrap -mx-3 mb-6" }, [
-      _c("div", { staticClass: "w-full md:w-full px-3 mb-6" }, [
-        _c(
-          "label",
+  return _c("div", { staticClass: "max-w-lg mx-auto" }, [
+    _vm.message
+      ? _c("div", [
+          _vm.success
+            ? _c(
+                "div",
+                {
+                  staticClass:
+                    "flex bg-green-100 rounded-lg p-4 mb-4 text-sm text-green-700",
+                  attrs: { role: "alert" },
+                },
+                [
+                  _c(
+                    "svg",
+                    {
+                      staticClass: "w-5 h-5 inline mr-3",
+                      attrs: {
+                        fill: "currentColor",
+                        viewBox: "0 0 20 20",
+                        xmlns: "http://www.w3.org/2000/svg",
+                      },
+                    },
+                    [
+                      _c("path", {
+                        attrs: {
+                          "fill-rule": "evenodd",
+                          d: "M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z",
+                          "clip-rule": "evenodd",
+                        },
+                      }),
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", [
+                    _vm._v(
+                      "\n                " +
+                        _vm._s(_vm.message) +
+                        "\n            "
+                    ),
+                  ]),
+                ]
+              )
+            : _c(
+                "div",
+                {
+                  staticClass:
+                    "flex bg-red-100 rounded-lg p-4 mb-4 text-sm text-red-700",
+                  attrs: { role: "alert" },
+                },
+                [
+                  _c(
+                    "svg",
+                    {
+                      staticClass: "w-5 h-5 inline mr-3",
+                      attrs: {
+                        fill: "currentColor",
+                        viewBox: "0 0 20 20",
+                        xmlns: "http://www.w3.org/2000/svg",
+                      },
+                    },
+                    [
+                      _c("path", {
+                        attrs: {
+                          "fill-rule": "evenodd",
+                          d: "M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z",
+                          "clip-rule": "evenodd",
+                        },
+                      }),
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", [
+                    _vm._v(
+                      "\n                " +
+                        _vm._s(_vm.message) +
+                        "\n            "
+                    ),
+                  ]),
+                ]
+              ),
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.errors
+      ? _c(
+          "div",
           {
             staticClass:
-              "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
-            attrs: { for: "title" },
+              "flex bg-red-100 rounded-lg p-4 mb-4 text-sm text-red-700",
+            attrs: { role: "alert" },
           },
-          [_vm._v("Title")]
-        ),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.post_data.title,
-              expression: "post_data.title",
-            },
-          ],
-          staticClass:
-            "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none",
-          attrs: { type: "text", name: "title", id: "title", required: "" },
-          domProps: { value: _vm.post_data.title },
-          on: {
-            input: function ($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.post_data, "title", $event.target.value)
-            },
+          [
+            _c(
+              "ul",
+              _vm._l(_vm.errors, function (error) {
+                return _c("li", [_vm._v(_vm._s(error))])
+              }),
+              0
+            ),
+          ]
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _c(
+      "form",
+      {
+        staticClass: "border border-radius-2 mb-2 p-4",
+        on: {
+          submit: function ($event) {
+            $event.preventDefault()
+            return _vm.createPost.apply(null, arguments)
           },
-        }),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "w-full md:w-full px-3 mb-6" }, [
-        _c("label", { staticClass: "sr-only", attrs: { for: "editor" } }, [
-          _vm._v("Content"),
-        ]),
-        _vm._v(" "),
-        _c("textarea", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.post_data.content,
-              expression: "post_data.content",
-            },
-          ],
-          staticClass:
-            "block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none",
-          attrs: {
-            name: "content",
-            id: "editor",
-            rows: "8",
-            placeholder: "Write an article...",
-            required: "",
-          },
-          domProps: { value: _vm.post_data.content },
-          on: {
-            input: function ($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.post_data, "content", $event.target.value)
-            },
-          },
-        }),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "w-full px-3 mb-6" }, [
-        _c(
-          "button",
-          {
-            staticClass:
-              "inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800",
-            on: {
-              click: function ($event) {
-                return _vm.createPost()
+        },
+      },
+      [
+        _c("div", { staticClass: "flex flex-wrap -mx-3 mb-6" }, [
+          _c("div", { staticClass: "w-full md:w-full px-3 mb-6" }, [
+            _c(
+              "label",
+              {
+                staticClass:
+                  "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+                attrs: { for: "title" },
               },
-            },
-          },
-          [_vm._v(" Publish post ")]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass:
-              "inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-orange-700 rounded-lg focus:ring-4 focus:ring-orange-200 dark:focus:ring-orange-900 hover:bg-orange-800",
-            attrs: { type: "reset" },
-          },
-          [_vm._v(" Cancel ")]
-        ),
-      ]),
-    ]),
+              [_vm._v("Title")]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.post_data.title,
+                  expression: "post_data.title",
+                },
+              ],
+              staticClass:
+                "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none",
+              attrs: { type: "text", name: "title", id: "title", required: "" },
+              domProps: { value: _vm.post_data.title },
+              on: {
+                input: function ($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.post_data, "title", $event.target.value)
+                },
+              },
+            }),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "w-full md:w-full px-3 mb-6" }, [
+            _c("label", { staticClass: "sr-only", attrs: { for: "editor" } }, [
+              _vm._v("Content"),
+            ]),
+            _vm._v(" "),
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.post_data.content,
+                  expression: "post_data.content",
+                },
+              ],
+              staticClass:
+                "block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none",
+              attrs: {
+                name: "content",
+                id: "editor",
+                rows: "8",
+                placeholder: "Write an article...",
+                required: "",
+              },
+              domProps: { value: _vm.post_data.content },
+              on: {
+                input: function ($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.post_data, "content", $event.target.value)
+                },
+              },
+            }),
+          ]),
+          _vm._v(" "),
+          _vm._m(0),
+        ]),
+      ]
+    ),
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "w-full px-3 mb-6" }, [
+      _c(
+        "button",
+        {
+          staticClass:
+            "inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800",
+          attrs: { type: "submit" },
+        },
+        [_vm._v(" Publish post ")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass:
+            "inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-orange-700 rounded-lg focus:ring-4 focus:ring-orange-200 dark:focus:ring-orange-900 hover:bg-orange-800",
+          attrs: { type: "reset" },
+        },
+        [_vm._v(" Cancel ")]
+      ),
+    ])
+  },
+]
 render._withStripped = true
 
 
