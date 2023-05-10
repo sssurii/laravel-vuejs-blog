@@ -5312,6 +5312,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//import { Router } from 'express';
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -5320,18 +5322,19 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.getPosts();
-    console.log('Component Blog mounted.');
+    console.log("Component Blog mounted.");
   },
   methods: {
     getPosts: function getPosts() {
       var _this = this;
-      axios.get(this.$root.url('api/posts')).then(function (response) {
+      axios.get(this.$root.url("api/posts")).then(function (response) {
         _this.blogPosts = response.data;
       })["catch"](function (error) {
         console.log(error);
       });
     }
   }
+  //components: { Router }
 });
 
 /***/ }),
@@ -5621,9 +5624,16 @@ var render = function render() {
     _c = _vm._self._c;
   return _c("div", {
     staticClass: "container"
+  }, [_c("div", {
+    staticClass: "d-flex align-items-center justify-content-center justify-content- mb-3"
   }, [_c("h1", {
-    staticClass: "text-3xl font-bold"
-  }, [_vm._v("Blog")]), _vm._v(" "), _vm.blogPosts ? _c("div", _vm._l(_vm.blogPosts, function (post) {
+    staticClass: "text-3xl font-bold col-10"
+  }, [_vm._v("Blog")]), _vm._v(" "), _c("router-link", {
+    staticClass: "btn btn-primary btn-sm col-2",
+    attrs: {
+      to: "/post/create"
+    }
+  }, [_vm._v("Create Post")])], 1), _vm._v(" "), _vm.blogPosts ? _c("div", _vm._l(_vm.blogPosts, function (post) {
     return _c("div", {
       key: post.id
     }, [_c("div", {
@@ -6289,6 +6299,7 @@ try {
 
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.withCredentials = true;
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

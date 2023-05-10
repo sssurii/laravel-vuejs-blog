@@ -1,6 +1,9 @@
 <template>
     <div class="container">
-        <h1 class="text-3xl font-bold">Blog</h1>
+        <div class="d-flex align-items-center justify-content-center justify-content- mb-3">
+            <h1 class="text-3xl font-bold col-10">Blog</h1>
+            <router-link to="/post/create" class="btn btn-primary btn-sm col-2 ">Create Post</router-link>
+        </div>
         <div v-if="blogPosts">
             <!-- It's not recommend to use v-if with v-for. For more detail check :
                 https://vuejs.org/v2/style-guide/#Avoid-v-if-with-v-for-essential -->
@@ -19,29 +22,32 @@
             <p>Sorry! no post available</p>
         </div>
     </div>
-</template>
+</template> 
 <script>
+//import { Router } from 'express';
+
 export default {
     data() {
         return {
             blogPosts: null
-        }
+        };
     },
     mounted() {
         this.getPosts();
-        console.log('Component Blog mounted.')
+        console.log("Component Blog mounted.");
     },
     methods: {
-        getPosts: function() {
-            axios.get(this.$root.url('api/posts'))
+        getPosts: function () {
+            axios.get(this.$root.url("api/posts"))
                 .then((response) => {
-                    this.blogPosts = response.data
-                })
-                .catch(function(error) {
-                    console.log(error);
-                });
+                this.blogPosts = response.data;
+            })
+                .catch(function (error) {
+                console.log(error);
+            });
         }
-    }
+    },
+    //components: { Router }
 }
 
 </script>
