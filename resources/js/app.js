@@ -7,7 +7,9 @@
 require('./bootstrap');
 
 import Vue from 'vue/dist/vue';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Tooltip, Toast, Popover } from 'bootstrap';
+import Alert from 'bootstrap/js/dist/alert';
 window.Vue = require('vue');
 
 import VueRouter from 'vue-router';
@@ -17,16 +19,17 @@ import HelloWorld from './components/HelloWorld';
 Vue.use(VueRouter);
 
 const routes = [
-    {path: '/hello-world', component: HelloWorld},
-    {path: '/', component: require('./components/Blog.vue').default},
-    {path: '/post/create', component: require('./components/posts/add.vue').default},
-    {path: '/post/:id', component: require('./components/BlogPost.vue').default},
-    {path: '/register', component: require('./components/RegisterForm.vue').default}
+    { path: '/hello-world', component: HelloWorld },
+    { path: '/', component: require('./components/Blog.vue').default },
+    { path: '/post/create', component: require('./components/posts/add.vue').default },
+    { path: '/post/:id', component: require('./components/BlogPost.vue').default },
+    { path: '/register', component: require('./components/RegisterForm.vue').default },
+    { path: '/login', component: require('./components/LoginForm.vue').default }
 ];
 
 const router = new VueRouter({
-  mode:"history",
-  routes 
+    mode: "history",
+    routes
 });
 
 /**
@@ -47,6 +50,7 @@ Vue.component('blog', require('./components/Blog.vue').default);
 Vue.component('blog-post', require('./components/BlogPost.vue').default);
 Vue.component('add-post', require('./components/posts/add.vue').default);
 Vue.component('register-form', require('./components/RegisterForm.vue').default);
+Vue.component('login-form', require('./components/LoginForm.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
