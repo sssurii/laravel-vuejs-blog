@@ -5546,6 +5546,40 @@ __webpack_require__.r(__webpack_exports__);
     },
     route: function route(link) {
       return window.location.origin + link;
+    },
+    getCookie: function getCookie(name) {
+      if (!document.cookie) {
+        return null;
+      }
+      var xsrfCookies = document.cookie.split(';').map(function (c) {
+        return c.trim();
+      }).filter(function (c) {
+        return c.startsWith(name + '=');
+      });
+      if (xsrfCookies.length === 0) {
+        return null;
+      }
+      return decodeURIComponent(xsrfCookies[0].split('=')[1]);
+    },
+    submitRegistration: function submitRegistration(e) {
+      e.preventDefault();
+      axios.get(this.$root.url("register")).then(function (response) {
+        console.log(response);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+      var csrfToken = this.getCookie('XSRF-TOKEN');
+      axios.post(this.$root.url("register"), new FormData(document.querySelector('#registerForm')), {
+        headers: {
+          'X-XSRF-TOKEN': csrfToken,
+          'Content-Type': 'application/json'
+        },
+        credentials: 'include'
+      }).then(function (response) {
+        console.log(response);
+      })["catch"](function (error) {
+        console.log(error);
+      });
     }
   },
   mounted: function mounted() {
@@ -5937,11 +5971,18 @@ var render = function render() {
     staticClass: "form-signup form mb-3",
     attrs: {
       method: "post",
-      action: _vm.url("/register")
+      action: _vm.url("/register"),
+      id: "registerForm"
+    },
+    on: {
+      submit: function submit($event) {
+        $event.preventDefault();
+        return _vm.submitRegistration.apply(null, arguments);
+      }
     }
   }, [_c("h1", {
     staticClass: "h3 mb-3 font-weight-normal"
-  }, [_vm._v("Register")]), _vm._v(" "), _vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _c("button", {
+  }, [_vm._v("Register")]), _vm._v(" "), _vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3), _vm._v(" "), _c("button", {
     staticClass: "btn btn-lg btn-primary btn-block",
     attrs: {
       type: "submit"
@@ -6010,6 +6051,26 @@ var staticRenderFns = [function () {
       id: "password",
       name: "password",
       placeholder: "Password",
+      required: ""
+    }
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "form-group mb-3"
+  }, [_c("label", {
+    staticClass: "sr-only",
+    attrs: {
+      "for": "password"
+    }
+  }, [_vm._v("Confirm Password")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "password",
+      id: "password_confirmation",
+      name: "password_confirmation",
+      placeholder: "Confirm Password",
       required: ""
     }
   })]);
