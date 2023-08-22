@@ -56,8 +56,7 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         $request->user()->currentAccessToken()->delete();
-
-        if (Auth::user() && !Auth::logout()) {
+        if (Auth::user() && Auth::guard('web')->logout()) {
             return response()->json([
                 'message' => 'Cannot Logout!',
             ], 400);

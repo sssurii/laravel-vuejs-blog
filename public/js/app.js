@@ -5492,7 +5492,9 @@ __webpack_require__.r(__webpack_exports__);
           localStorage.setItem('token', response.data.token);
           app.isLoggedIn = true;
           _this.$router.push(localStorage.getItem('intendTo', '/'));
+          localStorage.setItem('intendTo', '/');
         })["catch"](function (error) {
+          localStorage.setItem('isLoggedIn', false);
           console.log(error);
         });
       });
@@ -5516,11 +5518,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-var _this = undefined;
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      isLoggedIn: localStorage.getItem('isLoggedIn'),
+      isLoggedIn: localStorage.getItem('isLoggedIn') == 'true',
       links: [{
         'title': 'Home',
         'link': '/'
@@ -5547,7 +5548,7 @@ var _this = undefined;
       // {
       //     'title' : 'Forge',
       //     'link' : ''
-      // },
+      // },localStorage.setItem('isLoggedIn', false);
       // {
       //     'title' : 'Vapor',
       //     'link' : ''
@@ -5571,16 +5572,19 @@ var _this = undefined;
       }).then(function (response) {
         console.log(response.data);
         app.isLoggedIn = false;
-        _this.$router.push('/login');
+        localStorage.setItem('isLoggedIn', false);
+        window.location.reload();
       })["catch"](function (error) {
         console.log(error);
       });
     }
   },
   mounted: function mounted() {
-    var _this2 = this;
+    var _this = this;
+    console.log(this.isLoggedIn);
     setTimeout(function () {
-      _this2.isLoggedIn = localStorage.getItem('isLoggedIn');
+      _this.isLoggedIn = localStorage.getItem('isLoggedIn') == 'true';
+      console.log(_this.isLoggedIn);
     }, 1000);
     console.log('navbar loaded');
   }
@@ -6005,15 +6009,18 @@ var render = function render() {
     attrs: {
       to: "/register"
     }
-  }, [_vm._v("Register")]) : _vm._e(), _vm._v(" "), _vm.isLoggedIn ? _c("a", {
-    on: {
-      click: _vm.handleLogout
-    }
-  }, [_vm._v("Logout")]) : _c("router-link", {
+  }, [_vm._v("Register")]) : _vm._e(), _vm._v(" "), !_vm.isLoggedIn ? _c("router-link", {
     attrs: {
       to: "/login"
     }
-  }, [_vm._v("Login")])], 2);
+  }, [_vm._v("Login")]) : _vm._e(), _vm._v(" "), _vm.isLoggedIn ? _c("a", {
+    attrs: {
+      href: "#"
+    },
+    on: {
+      click: _vm.handleLogout
+    }
+  }, [_vm._v("Logout")]) : _vm._e()], 2);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -6438,7 +6445,11 @@ var app = new (vue_dist_vue__WEBPACK_IMPORTED_MODULE_5___default())({
                 localStorage.setItem('isLoggedIn', true);
               })["catch"](function (error) {
                 console.log(error);
-                localStorage.setItem('intendTo', router.currentRoute.path), router.currentRoute.path != '/login' && router.replace('/login');
+                localStorage.setItem('isLoggedIn', false);
+                if (router.currentRoute.path != '/login' && router.currentRoute.path != '/register') {
+                  localStorage.setItem('intendTo', router.currentRoute.path);
+                  router.replace('/login');
+                }
               });
             case 2:
             case "end":

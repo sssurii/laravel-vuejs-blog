@@ -80,8 +80,10 @@ export default {
                         localStorage.setItem('token', response.data.token);
                         app.isLoggedIn = true;
                         this.$router.push(localStorage.getItem('intendTo', '/'))
+                        localStorage.setItem('intendTo', '/');
                     })
                     .catch(function (error) {
+                        localStorage.setItem('isLoggedIn', false);
                         console.log(error);
                     });
             });

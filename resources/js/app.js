@@ -81,8 +81,11 @@ const app = new Vue({
             })
             .catch(function (error) {
                 console.log(error);
-                localStorage.setItem('intendTo', router.currentRoute.path),
-                router.currentRoute.path != '/login' && router.replace('/login');
+                localStorage.setItem('isLoggedIn', false);
+                if (router.currentRoute.path != '/login' && router.currentRoute.path != '/register') {
+                    localStorage.setItem('intendTo', router.currentRoute.path);
+                    router.replace('/login');
+                }
             });
         }
     },
