@@ -14,6 +14,7 @@ window.Vue = require('vue');
 
 import VueRouter from 'vue-router';
 import HelloWorld from './components/HelloWorld';
+import { data } from 'jquery';
 
 
 Vue.use(VueRouter);
@@ -63,9 +64,29 @@ const app = new Vue({
     router,
     data: {
         title: 'Hello World!',
-        content: 'Welcome to Laravel + Vue.js Blog'
+        content: 'Welcome to Laravel + Vue.js Blog',
+        isLoggedIn: false,
     },
     methods: {
-        url: (link) => '/' + link.trim('/')
-    }
+        url: (link) => '/' + link.trim('/'),
+        checkAuth: async () => {
+            await axios.get(window.location.origin + '/api/user', {
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('token'),
+                    'Content-Type': 'application/json'
+            }})
+            .then((response) => { 
+                data.isLoggedIn = true;
+                localStorage.setItem('isLoggedIn', true);
+            })
+            .catch(function (error) {
+                console.log(error);
+                localStorage.setItem('intendTo', router.currentRoute.path),
+                router.currentRoute.path != '/login' && router.replace('/login');
+            });
+        }
+    },
+    async beforeMount() {
+        await this.checkAuth();
+    },
 });
