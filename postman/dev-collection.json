@@ -7,6 +7,20 @@
 	"item": [
 		{
 			"name": "/posts",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "aaf52396-b64e-4ae3-881e-8aa2c9a0289d",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"id": "039a1a2e-2824-4ecb-9c7a-60b2841a6c3b",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
